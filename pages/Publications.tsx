@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { FileText, ExternalLink, X, Download, Maximize2 } from 'lucide-react';
 
@@ -11,18 +10,66 @@ interface Publication {
   tag?: string;
 }
 
+/**
+ * Helper to convert GitHub blob URLs to raw.githubusercontent.com URLs
+ */
+const getRawUrl = (url: string) => {
+  if (!url.includes('github.com') || url.includes('raw.githubusercontent.com')) return url; 
+  return url
+    .replace('github.com', 'raw.githubusercontent.com')
+    .replace('/blob/', '/');
+};
+
+const renderAuthor = (authors: string) => {
+  const parts = authors.split('Qianxi Yu');
+  if (parts.length >= 2) {
+    return (
+      <span className="text-slate-600">
+        {parts[0]}<span className="font-bold text-slate-900 underline decoration-[#665366]/40 decoration-2 underline-offset-4">Qianxi Yu</span>{parts.slice(1).join('Qianxi Yu')}
+      </span>
+    );
+  }
+  return <span className="text-slate-600">{authors}</span>;
+};
+
+const PublicationCard: React.FC<{ 
+  pub: Publication; 
+  onSelect: (pub: Publication) => void; 
+}> = ({ pub, onSelect }) => (
+  <button 
+    onClick={() => onSelect(pub)}
+    className="w-full text-left group block p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#665366]/30 transition-all duration-500 relative overflow-hidden"
+  >
+    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <ExternalLink size={24} className="text-[#665366]" />
+    </div>
+    
+    <div className="flex flex-col h-full">
+      <div className="flex items-center gap-3 mb-4">
+        <span className="px-3 py-1 bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-widest rounded-full border border-slate-100">
+          {pub.tag}
+        </span>
+        <span className="text-sm font-bold text-slate-400">{pub.year}</span>
+      </div>
+      
+      <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#665366] transition-colors leading-tight pr-8">
+        {pub.title}
+      </h3>
+      
+      <div className="text-lg mb-4">
+        {renderAuthor(pub.authors)}
+      </div>
+      
+      <div className="mt-auto flex items-center gap-2 text-slate-500 italic text-lg">
+        <FileText size={18} className="shrink-0" />
+        <span>{pub.journal}</span>
+      </div>
+    </div>
+  </button>
+);
+
 const Publications: React.FC = () => {
   const [selectedPdf, setSelectedPdf] = useState<{ rawUrl: string; originalUrl: string; title: string } | null>(null);
-
-  /**
-   * Helper to convert GitHub blob URLs to raw.githubusercontent.com URLs
-   */
-  const getRawUrl = (url: string) => {
-    if (!url.includes('github.com') || url.includes('raw.githubusercontent.com')) return url; 
-    return url
-      .replace('github.com', 'raw.githubusercontent.com')
-      .replace('/blob/', '/');
-  };
 
   const firstAuthorPapers: Publication[] = [
     {
@@ -86,54 +133,13 @@ const Publications: React.FC = () => {
     }
   }, [selectedPdf]);
 
-  const renderAuthor = (authors: string) => {
-    const parts = authors.split('Qianxi Yu');
-    if (parts.length >= 2) {
-      return (
-        <span className="text-slate-600">
-          {parts[0]}<span className="font-bold text-slate-900 underline decoration-[#665366]/40 decoration-2 underline-offset-4">Qianxi Yu</span>{parts.slice(1).join('Qianxi Yu')}
-        </span>
-      );
-    }
-    return <span className="text-slate-600">{authors}</span>;
+  const handleSelectPublication = (pub: Publication) => {
+    setSelectedPdf({ 
+      rawUrl: getRawUrl(pub.pdfUrl), 
+      originalUrl: pub.pdfUrl,
+      title: pub.title 
+    });
   };
-
-  const PublicationCard = ({ pub }: { pub: Publication }) => (
-    <button 
-      onClick={() => setSelectedPdf({ 
-        rawUrl: getRawUrl(pub.pdfUrl), 
-        originalUrl: pub.pdfUrl,
-        title: pub.title 
-      })}
-      className="w-full text-left group block p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#665366]/30 transition-all duration-500 relative overflow-hidden"
-    >
-      <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <ExternalLink size={24} className="text-[#665366]" />
-      </div>
-      
-      <div className="flex flex-col h-full">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="px-3 py-1 bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-widest rounded-full border border-slate-100">
-            {pub.tag}
-          </span>
-          <span className="text-sm font-bold text-slate-400">{pub.year}</span>
-        </div>
-        
-        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#665366] transition-colors leading-tight pr-8">
-          {pub.title}
-        </h3>
-        
-        <div className="text-lg mb-4">
-          {renderAuthor(pub.authors)}
-        </div>
-        
-        <div className="mt-auto flex items-center gap-2 text-slate-500 italic text-lg">
-          <FileText size={18} className="shrink-0" />
-          <span>{pub.journal}</span>
-        </div>
-      </div>
-    </button>
-  );
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl">
@@ -150,7 +156,11 @@ const Publications: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 gap-8">
             {firstAuthorPapers.map((pub, index) => (
-              <PublicationCard key={index} pub={pub} />
+              <PublicationCard 
+                key={index} 
+                pub={pub} 
+                onSelect={handleSelectPublication}
+              />
             ))}
           </div>
         </section>
@@ -163,7 +173,11 @@ const Publications: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 gap-8">
             {coAuthorPapers.map((pub, index) => (
-              <PublicationCard key={index} pub={pub} />
+              <PublicationCard 
+                key={index} 
+                pub={pub} 
+                onSelect={handleSelectPublication}
+              />
             ))}
           </div>
         </section>

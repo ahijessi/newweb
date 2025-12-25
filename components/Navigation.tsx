@@ -10,7 +10,7 @@ const Navigation: React.FC = () => {
   const navItems = [
     { id: Page.Home, label: 'Home', color: '#C15451' },
     { id: Page.Education, label: 'Education', color: '#CA9EA0' },
-    { id: Page.Work, label: 'Work', color: '#CC8BA1' },
+    { id: Page.Work, label: 'Work', color: '#E9BBCC' },
     { id: Page.Publications, label: 'Publications', color: '#665366' },
     { id: Page.Conferences, label: 'Conferences', color: '#DEC0C4' },
     { id: Page.Other, label: 'Other', color: '#FAECA7' },
@@ -22,11 +22,11 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <nav className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+    <nav className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
       {navItems.map((item) => {
         const active = isActive(item.id);
         // Determine if we should use white text for better contrast
-        const isDarkBackground = ['#c15451', '#cc8ba1', '#665366'].includes(item.color.toLowerCase());
+        const isDarkBackground = ['#c15451', '#665366'].includes(item.color.toLowerCase());
         
         return (
           <button
