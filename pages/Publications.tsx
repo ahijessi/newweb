@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { FileText, ExternalLink, X, Download, Maximize2 } from 'lucide-react';
 
@@ -39,30 +38,30 @@ const PublicationCard: React.FC<{
 }> = ({ pub, onSelect }) => (
   <button 
     onClick={() => onSelect(pub)}
-    className="w-full text-left group block p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg hover:border-[#665366]/30 transition-all duration-500 relative overflow-hidden"
+    className="w-full text-left group block p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#665366]/30 transition-all duration-500 relative overflow-hidden"
   >
-    <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <ExternalLink size={20} className="text-[#665366]" />
+    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <ExternalLink size={24} className="text-[#665366]" />
     </div>
     
     <div className="flex flex-col h-full">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="px-2.5 py-0.5 bg-slate-50 text-slate-500 text-[10px] font-bold uppercase tracking-widest rounded-full border border-slate-100">
+      <div className="flex items-center gap-3 mb-4">
+        <span className="px-3 py-1 bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-widest rounded-full border border-slate-100">
           {pub.tag}
         </span>
-        <span className="text-xs font-bold text-slate-400">{pub.year}</span>
+        <span className="text-sm font-bold text-slate-400">{pub.year}</span>
       </div>
       
-      <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3 group-hover:text-[#665366] transition-colors leading-snug pr-8">
+      <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#665366] transition-colors leading-tight pr-8">
         {pub.title}
       </h3>
       
-      <div className="text-base mb-3 leading-relaxed">
+      <div className="text-lg mb-4">
         {renderAuthor(pub.authors)}
       </div>
       
-      <div className="mt-auto flex items-center gap-2 text-slate-500 italic text-sm">
-        <FileText size={16} className="shrink-0" />
+      <div className="mt-auto flex items-center gap-2 text-slate-500 italic text-lg">
+        <FileText size={18} className="shrink-0" />
         <span>{pub.journal}</span>
       </div>
     </div>
@@ -143,19 +142,19 @@ const Publications: React.FC = () => {
   };
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
-      <div className="flex justify-between items-end mb-10">
-        <h2 className="text-4xl font-bold text-slate-900">Publications</h2>
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl">
+      <div className="flex justify-between items-end mb-16">
+        <h2 className="text-5xl font-bold text-slate-900">Publications</h2>
       </div>
       
-      <div className="space-y-12">
+      <div className="space-y-20">
         <section>
-          <div className="mb-6">
-            <h3 className="text-2xl font-bold italic tracking-tight" style={{ color: '#90798d' }}>
+          <div className="mb-10">
+            <h3 className="text-3xl font-bold italic tracking-tight" style={{ color: '#90798d' }}>
               First-author papers
             </h3>
           </div>
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-8">
             {firstAuthorPapers.map((pub, index) => (
               <PublicationCard 
                 key={index} 
@@ -167,12 +166,12 @@ const Publications: React.FC = () => {
         </section>
 
         <section>
-          <div className="mb-6">
-            <h3 className="text-2xl font-bold italic tracking-tight" style={{ color: '#90798d' }}>
+          <div className="mb-10">
+            <h3 className="text-3xl font-bold italic tracking-tight" style={{ color: '#90798d' }}>
               Co-author papers
             </h3>
           </div>
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-8">
             {coAuthorPapers.map((pub, index) => (
               <PublicationCard 
                 key={index} 
@@ -192,41 +191,41 @@ const Publications: React.FC = () => {
           onClick={() => setSelectedPdf(null)}
         >
           <div 
-            className="bg-white w-full h-full max-w-5xl rounded-[2rem] overflow-hidden shadow-2xl flex flex-col animate-in zoom-in-95 duration-300"
+            className="bg-white w-full h-full max-w-6xl rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 backdrop-blur-md">
-              <div className="flex items-center gap-3 overflow-hidden">
-                <div className="w-8 h-8 bg-[#665366]/10 rounded-lg flex items-center justify-center text-[#665366] shrink-0">
-                  <FileText size={16} />
+            <div className="px-8 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 backdrop-blur-md">
+              <div className="flex items-center gap-4 overflow-hidden">
+                <div className="w-10 h-10 bg-[#665366]/10 rounded-xl flex items-center justify-center text-[#665366] shrink-0">
+                  <FileText size={20} />
                 </div>
-                <h4 className="font-bold text-slate-800 truncate text-base">{selectedPdf.title}</h4>
+                <h4 className="font-bold text-slate-800 truncate text-lg">{selectedPdf.title}</h4>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <a 
                   href={selectedPdf.rawUrl} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 hover:bg-slate-200 rounded-full text-slate-500 transition-colors flex items-center gap-2"
+                  className="p-3 hover:bg-slate-200 rounded-full text-slate-500 transition-colors flex items-center gap-2"
                   title="Open in new tab"
                 >
-                  <Maximize2 size={18} />
+                  <Maximize2 size={20} />
                 </a>
                 <a 
                   href={selectedPdf.rawUrl} 
                   download
-                  className="p-2 hover:bg-[#665366]/10 hover:text-[#665366] rounded-full text-slate-500 transition-colors"
+                  className="p-3 hover:bg-[#665366]/10 hover:text-[#665366] rounded-full text-slate-500 transition-colors"
                   title="Download PDF"
                 >
-                  <Download size={18} />
+                  <Download size={20} />
                 </a>
-                <div className="w-px h-5 bg-slate-200 mx-1"></div>
+                <div className="w-px h-6 bg-slate-200 mx-1"></div>
                 <button 
                   onClick={() => setSelectedPdf(null)}
-                  className="p-2 hover:bg-red-50 hover:text-red-500 rounded-full text-slate-500 transition-colors"
+                  className="p-3 hover:bg-red-50 hover:text-red-500 rounded-full text-slate-500 transition-colors"
                 >
-                  <X size={20} />
+                  <X size={24} />
                 </button>
               </div>
             </div>

@@ -18,59 +18,59 @@ const Education: React.FC = () => {
   ];
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-10 text-slate-900">Education</h2>
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl">
+      <h2 className="text-5xl font-bold mb-16 text-slate-900">Education</h2>
       
       <div className="relative">
         {/* Vertical Timeline Line */}
         <div 
-          className="absolute left-[7px] md:left-[200px] top-0 bottom-0 w-px md:w-0.5 rounded-full" 
+          className="absolute left-[7px] md:left-[224px] top-0 bottom-0 w-1 rounded-full" 
           style={{ backgroundColor: '#CE8397' }}
         ></div>
 
-        <div className="space-y-12">
+        <div className="space-y-20">
           {educationItems.map((item, index) => (
-            <div key={index} className="relative flex flex-col md:flex-row gap-6 md:gap-10">
+            <div key={index} className="relative flex flex-col md:flex-row gap-8 md:gap-14">
               
               {/* Date Column (Left of Timeline) */}
-              <div className="hidden md:block w-44 pt-1 text-right">
-                <span className="text-lg font-bold text-slate-500 tracking-tight whitespace-nowrap">
+              <div className="hidden md:block w-52 pt-1 text-right">
+                <span className="text-2xl font-bold text-slate-500 tracking-tight whitespace-nowrap">
                   {item.period}
                 </span>
               </div>
 
               {/* Timeline Dot */}
-              <div className="absolute left-0 md:left-[193px] top-2 z-10">
+              <div className="absolute left-0 md:left-[216px] top-2.5 z-10">
                 <div 
-                  className="w-4 h-4 rounded-full border-2 border-white shadow-md" 
+                  className="w-5 h-5 rounded-full border-4 border-white shadow-md" 
                   style={{ backgroundColor: '#CE8397' }}
                 ></div>
               </div>
 
               {/* Content Column (Right of Timeline) */}
-              <div className="pl-8 md:pl-4 flex-1">
-                {/* Mobile Period */}
-                <div className="md:hidden text-sm font-bold text-[#CE8397] mb-2 tracking-widest whitespace-nowrap">
+              <div className="pl-10 md:pl-6 flex-1">
+                {/* Mobile Period (visible only on small screens) */}
+                <div className="md:hidden text-base font-bold text-[#CE8397] mb-3 tracking-widest whitespace-nowrap">
                   {item.period}
                 </div>
                 
                 <h3 
-                  className="text-xl font-bold mb-1" 
+                  className="text-2xl font-bold mb-2" 
                   style={{ color: '#392b2e' }}
                 >
                   {item.institution}
                 </h3>
                 
                 <div 
-                  className="text-lg font-semibold mb-3"
+                  className="text-2xl font-semibold mb-5"
                   style={{ color: '#938C9D' }}
                 >
                   {item.degree}
                 </div>
 
                 {item.thesis && (
-                  <div className="bg-white/50 border-l-2 border-slate-200 pl-4 py-1.5 italic text-base text-slate-600 leading-relaxed shadow-sm rounded-r-lg">
-                    <span className="not-italic font-bold text-slate-400 text-sm block mb-1 uppercase tracking-wider">Thesis:</span>
+                  <div className="bg-white/50 border-l-4 border-slate-200 pl-6 py-2 italic text-xl text-slate-600 leading-relaxed shadow-sm rounded-r-lg">
+                    <span className="not-italic font-bold text-slate-400 text-lg block mb-2 uppercase tracking-wider">Thesis:</span>
                     {item.thesis}
                   </div>
                 )}
