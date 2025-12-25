@@ -3,12 +3,12 @@ import React, { useState, useRef } from 'react';
 import { Play, Pause, Volume2 } from 'lucide-react';
 
 /**
- * 🎵 User Specified Audio URL - Verified for mywebsite
+ * 🎵 User Specified Audio URL
  */
 const AUDIO_URL = "https://raw.githubusercontent.com/ahijessi/mywebsite/main/avatar/Gymnopedie_No._1.mp3";
 
 /**
- * 🖼️ Music Player Album Cover URL - Verified for mywebsite
+ * 🖼️ Music Player Album Cover URL
  */
 const ALBUM_COVER_URL = "https://raw.githubusercontent.com/ahijessi/mywebsite/main/avatar/frame.png";
 
@@ -24,7 +24,7 @@ const MusicPlayer: React.FC = () => {
         audioRef.current.pause();
       } else {
         audioRef.current.play().catch(error => {
-          console.error("Playback failed. This usually happens if the resource isn't loaded yet or is blocked.", error);
+          console.error("Playback failed.", error);
         });
       }
       setIsPlaying(!isPlaying);
@@ -64,7 +64,7 @@ const MusicPlayer: React.FC = () => {
   };
 
   return (
-    <section className="bg-slate-900/50 backdrop-blur-md text-white p-6 md:p-8 rounded-[3rem] relative overflow-hidden shadow-2xl transition-all duration-500 border border-white/10 max-w-5xl mx-auto w-full">
+    <section className="bg-slate-900/50 backdrop-blur-md text-white p-4 md:p-6 rounded-[2rem] relative overflow-hidden shadow-xl transition-all duration-500 border border-white/10 max-w-4xl mx-auto w-full">
       <audio 
         ref={audioRef}
         src={AUDIO_URL}
@@ -75,13 +75,13 @@ const MusicPlayer: React.FC = () => {
       />
 
       {/* Decorative Orbs */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-[120px] opacity-10 -mr-32 -mt-32"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500 rounded-full blur-[120px] opacity-10 -ml-32 -mb-32"></div>
+      <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500 rounded-full blur-[80px] opacity-10 -mr-24 -mt-24"></div>
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500 rounded-full blur-[80px] opacity-10 -ml-24 -mb-24"></div>
 
-      <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+      <div className="relative z-10 flex flex-col md:flex-row items-center gap-4 md:gap-8">
         <div className="relative shrink-0">
           {/* ✨ Glassmorphism Disk Container */}
-          <div className={`w-24 h-24 md:w-32 md:h-32 relative rounded-full flex items-center justify-center p-1.5 transition-all duration-500 ${isPlaying ? 'animate-[spin_8s_linear_infinite]' : ''}`}>
+          <div className={`w-20 h-20 md:w-24 md:h-24 relative rounded-full flex items-center justify-center p-1 transition-all duration-500 ${isPlaying ? 'animate-[spin_8s_linear_infinite]' : ''}`}>
             <div className="absolute inset-0 rounded-full bg-white/20 backdrop-blur-2xl border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.2)_inset,0_10px_30px_rgba(0,0,0,0.5)] z-0"></div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-white/30 z-20 pointer-events-none"></div>
             <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 relative z-10 border border-white/10">
@@ -96,41 +96,41 @@ const MusicPlayer: React.FC = () => {
                />
             </div>
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-slate-900 rounded-full border border-white/20 shadow-inner z-30">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-slate-900 rounded-full border border-white/20 shadow-inner z-30">
             <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm"></div>
           </div>
         </div>
 
-        <div className="flex-1 w-full space-y-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="flex-1 w-full space-y-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
             <div>
-              <div className="flex items-center gap-2 mb-1 text-blue-400 font-bold uppercase tracking-[0.2em] text-xs">
-                <span className="flex gap-0.5 h-3">
+              <div className="flex items-center gap-1.5 mb-0.5 text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px]">
+                <span className="flex gap-0.5 h-2.5">
                   {[...Array(4)].map((_, i) => (
                     <span 
                       key={i} 
-                      className={`w-0.5 bg-blue-400 rounded-full transition-all duration-300 ${isPlaying ? 'animate-bounce' : 'h-1'}`}
+                      className={`w-0.5 bg-blue-400 rounded-full transition-all duration-300 ${isPlaying ? 'animate-bounce' : 'h-0.5'}`}
                       style={{ animationDelay: `${i * 0.1}s`, height: isPlaying ? '100%' : '20%' }}
                     />
                   ))}
                 </span>
                 Atmosphere
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Gymnopédie No. 1</h2>
+              <h2 className="text-xl md:text-2xl font-bold tracking-tight">Gymnopédie No. 1</h2>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <button 
                 onClick={togglePlay}
-                className="w-14 h-14 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl hover:shadow-white/10"
+                className="w-10 h-10 md:w-12 md:h-12 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-white/10"
               >
-                {isPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} className="ml-1" fill="currentColor" />}
+                {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} className="ml-0.5" fill="currentColor" />}
               </button>
             </div>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex justify-between text-xs font-mono text-slate-500">
+          <div className="space-y-1.5">
+            <div className="flex justify-between text-[10px] font-mono text-slate-500">
               <span>{formatTime(audioRef.current?.currentTime || 0)}</span>
               <span>{formatTime(duration)}</span>
             </div>
@@ -140,18 +140,11 @@ const MusicPlayer: React.FC = () => {
               max="100"
               value={progress}
               onChange={handleProgressChange}
-              className="w-full h-1.5 bg-slate-800 rounded-full appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400 transition-all"
+              className="w-full h-1 bg-slate-800 rounded-full appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400 transition-all"
               style={{
                 background: `linear-gradient(to right, #3b82f6 ${progress}%, #1e293b ${progress}%)`
               }}
             />
-          </div>
-
-          <div className="flex items-center gap-4 text-slate-500 pt-1">
-            <Volume2 size={16} />
-            <div className="w-20 h-1 bg-slate-800 rounded-full overflow-hidden">
-              <div className="w-3/4 h-full bg-slate-600"></div>
-            </div>
           </div>
         </div>
       </div>
@@ -163,12 +156,12 @@ const MusicPlayer: React.FC = () => {
         }
         input[type='range']::-webkit-slider-thumb {
           appearance: none;
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           background: white;
           border-radius: 50%;
           cursor: pointer;
-          box-shadow: 0 0 10px rgba(0,0,0,0.5);
+          box-shadow: 0 0 8px rgba(0,0,0,0.5);
         }
       `}</style>
     </section>

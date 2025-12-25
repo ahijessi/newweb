@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <nav className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+    <nav className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
       {navItems.map((item) => {
         const active = isActive(item.id);
         // Determine if we should use white text for better contrast
@@ -36,13 +36,13 @@ const Navigation: React.FC = () => {
               backgroundColor: active ? item.color : 'white',
               borderColor: active ? item.color : '#e2e8f0' 
             }}
-            className={`group relative flex items-center justify-center py-4 px-1 rounded-2xl border transition-all duration-300 transform nav-font overflow-hidden ${
+            className={`group relative flex items-center justify-center py-2.5 px-1 rounded-xl border transition-all duration-300 transform nav-font overflow-hidden ${
               active
-                ? `shadow-lg scale-105 z-10 font-bold ${isDarkBackground ? 'text-white' : 'text-slate-900'}`
+                ? `shadow-md scale-105 z-10 font-bold ${isDarkBackground ? 'text-white' : 'text-slate-900'}`
                 : 'bg-white text-slate-500 hover:border-slate-300 hover:shadow-sm hover:-translate-y-0.5'
             }`}
           >
-            <span className="text-sm md:text-lg lg:text-xl tracking-tighter text-center leading-none">
+            <span className="text-sm md:text-base tracking-tight text-center leading-none">
               {item.label}
             </span>
             

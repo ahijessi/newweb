@@ -41,26 +41,26 @@ const Work: React.FC = () => {
   const subtitleColor = '#B2787C';
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl">
-      <h2 className="text-5xl font-bold mb-12 text-slate-900">Work Experience</h2>
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
+      <h2 className="text-4xl font-bold mb-8 text-slate-900">Work Experience</h2>
 
-      <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl overflow-hidden mb-12">
-        {/* Header Banner - Clean and Vibrant */}
-        <div className="p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: themeColor }}>
+      <div className="bg-white rounded-[1.5rem] border border-slate-100 shadow-lg overflow-hidden mb-10">
+        {/* Header Banner */}
+        <div className="p-6 md:p-8 relative overflow-hidden" style={{ backgroundColor: themeColor }}>
           {/* Subtle light effect */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-20 blur-3xl -mr-32 -mt-32 rounded-full"></div>
+          <div className="absolute top-0 right-0 w-48 h-48 bg-white opacity-20 blur-3xl -mr-24 -mt-24 rounded-full"></div>
           
-          <div className="relative z-10 flex flex-col gap-4">
+          <div className="relative z-10 flex flex-col gap-3">
             {/* Top Row: Title and Date */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
               <h3 
-                className="text-3xl md:text-4xl font-bold tracking-tight"
+                className="text-2xl md:text-3xl font-bold tracking-tight"
                 style={{ color: titleColor }}
               >
                 Research Assistant
               </h3>
               <div className="shrink-0">
-                <span className="inline-block px-4 py-1.5 bg-black/5 backdrop-blur-sm rounded-full text-2xl font-bold border border-black/5 text-slate-700">
+                <span className="inline-block px-3 py-1 bg-black/5 backdrop-blur-sm rounded-full text-lg font-bold border border-black/5 text-slate-700">
                   2024 - 2025
                 </span>
               </div>
@@ -69,7 +69,7 @@ const Work: React.FC = () => {
             {/* Middle Row: University and College */}
             <div>
               <h4 
-                className="text-xl md:text-2xl font-bold leading-tight"
+                className="text-lg md:text-xl font-bold leading-tight"
                 style={{ color: subtitleColor }}
               >
                 Zhejiang University, College of biomedical engineering & instrument science
@@ -77,33 +77,33 @@ const Work: React.FC = () => {
             </div>
             
             {/* Bottom Row: PI Info */}
-            <div className="mt-2 inline-block bg-white/40 backdrop-blur-md px-5 py-2.5 rounded-xl border border-white/40 text-2xl w-fit text-slate-800 shadow-sm">
+            <div className="mt-1 inline-block bg-white/40 backdrop-blur-md px-4 py-1.5 rounded-lg border border-white/40 text-lg w-fit text-slate-800 shadow-sm">
               <span className="font-bold">PI:</span> Associate Prof. Nai Ding
             </div>
           </div>
         </div>
 
         {/* Projects Content */}
-        <div className="p-8 md:p-12 space-y-10">
-          <h4 className="text-2xl font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-4">Key Projects</h4>
+        <div className="p-6 md:p-8 space-y-8">
+          <h4 className="text-xl font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-3">Key Projects</h4>
           
-          <div className="grid grid-cols-1 gap-12">
+          <div className="grid grid-cols-1 gap-8">
             {projects.map((project) => (
-              <div key={project.id} className="border-l-2 border-slate-100 pl-8 relative">
+              <div key={project.id} className="border-l-2 border-slate-100 pl-6 relative">
                 {/* Visual marker */}
                 <div 
-                  className="absolute -left-[5px] top-2 w-2 h-10 rounded-full"
+                  className="absolute -left-[5px] top-1.5 w-2 h-6 rounded-full"
                   style={{ backgroundColor: themeColor }}
                 ></div>
                 
-                <h5 className="text-2xl font-bold text-slate-800 mb-4">
+                <h5 className="text-xl font-bold text-slate-800 mb-2">
                   {project.title}
                 </h5>
-                <ul className="space-y-4">
+                <ul className="space-y-2">
                   {project.details.map((detail, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-xl text-slate-600 leading-relaxed">
+                    <li key={idx} className="flex items-start gap-3 text-base text-slate-600 leading-relaxed">
                       <span 
-                        className="mt-2.5 w-1.5 h-1.5 rounded-full shrink-0"
+                        className="mt-2 w-1 h-1 rounded-full shrink-0"
                         style={{ backgroundColor: themeColor }}
                       />
                       {detail}

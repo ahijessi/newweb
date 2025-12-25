@@ -33,66 +33,66 @@ const Conferences: React.FC = () => {
   const themeColor = '#B2787C';
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl">
-      <div className="mb-16">
-        <h2 className="text-5xl font-bold text-slate-900 mb-4">Conferences</h2>
-        <div className="h-1.5 w-24 rounded-full" style={{ backgroundColor: themeColor }}></div>
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
+      <div className="mb-10">
+        <h2 className="text-4xl font-bold text-slate-900 mb-2">Conferences</h2>
+        <div className="h-1 w-16 rounded-full" style={{ backgroundColor: themeColor }}></div>
       </div>
 
-      <section className="space-y-12">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="p-2 rounded-lg text-white" style={{ backgroundColor: themeColor }}>
-            <Mic2 size={24} />
+      <section className="space-y-8">
+        <div className="flex items-center gap-2 mb-6">
+          <div className="p-1.5 rounded-lg text-white" style={{ backgroundColor: themeColor }}>
+            <Mic2 size={18} />
           </div>
-          <h3 className="text-3xl font-bold text-slate-800 italic">Oral presentations</h3>
+          <h3 className="text-2xl font-bold text-slate-800 italic">Oral presentations</h3>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6">
           {conferences.map((conf, index) => (
             <div 
               key={index} 
-              className="group relative bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden flex flex-col md:flex-row"
+              className="group relative bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden flex flex-col md:flex-row"
             >
               {/* Color accent bar on the left */}
-              <div className="w-full md:w-3 h-3 md:h-auto" style={{ backgroundColor: themeColor }}></div>
+              <div className="w-full md:w-2 h-2 md:h-auto" style={{ backgroundColor: themeColor }}></div>
               
-              <div className="p-8 md:p-10 flex-1 flex flex-col">
-                <div className="flex flex-wrap items-center gap-3 mb-6">
+              <div className="p-6 md:p-8 flex-1 flex flex-col">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
                   <span 
-                    className="px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider text-white"
+                    className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white"
                     style={{ backgroundColor: themeColor }}
                   >
                     {conf.role}
                   </span>
-                  <div className="flex items-center gap-2 text-slate-400 font-medium">
-                    <Calendar size={18} />
+                  <div className="flex items-center gap-2 text-slate-400 font-medium text-sm">
+                    <Calendar size={14} />
                     <span>{conf.date}</span>
                   </div>
                 </div>
 
-                <div className="relative mb-6">
-                  <Quote size={40} className="absolute -left-2 -top-4 opacity-5 pointer-events-none" style={{ color: themeColor }} />
-                  <h4 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight group-hover:text-slate-800 transition-colors">
+                <div className="relative mb-4">
+                  <Quote size={24} className="absolute -left-2 -top-2 opacity-5 pointer-events-none" style={{ color: themeColor }} />
+                  <h4 className="text-xl md:text-2xl font-bold text-slate-900 leading-snug group-hover:text-slate-800 transition-colors">
                     {conf.title}
                   </h4>
                 </div>
 
-                <div className="mt-auto pt-6 border-t border-slate-50 flex flex-col md:flex-row md:items-center gap-6">
+                <div className="mt-auto pt-4 border-t border-slate-50 flex flex-col md:flex-row md:items-center gap-4">
                   <div className="flex-1">
-                    <p className="text-xl font-semibold text-slate-600 mb-1">
+                    <p className="text-base font-semibold text-slate-600 mb-1">
                       {conf.event}
                     </p>
-                    <div className="flex items-center gap-2 text-slate-400">
-                      <MapPin size={16} />
-                      <span className="text-lg">{conf.location}</span>
+                    <div className="flex items-center gap-2 text-slate-400 text-sm">
+                      <MapPin size={14} />
+                      <span>{conf.location}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Decorative element in background */}
-              <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none">
-                <Mic2 size={120} style={{ color: themeColor }} />
+              <div className="absolute -bottom-4 -right-4 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none">
+                <Mic2 size={80} style={{ color: themeColor }} />
               </div>
             </div>
           ))}
