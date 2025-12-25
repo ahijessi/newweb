@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qianxi Yu | 余千禧</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes gradient-flow {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    @keyframes silk-sway {
+      0%, 100% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.05) translate(-1%, -1%); }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Silk Texture Background with New Color Palette */
+    .flowing-bg {
+      position: relative;
+      /* Gradient from Top-Left to Bottom-Right (135deg) */
+      background: linear-gradient(135deg, #c2d4e5, #d4e1ed, #e6edf4, #f8fafc);
+      background-size: 400% 400%;
+      animation: gradient-flow 20s ease-in-out infinite;
+      min-height: 100vh;
+    }
+
+    /* The "Silk Sheen" Overlay */
+    .flowing-bg::before {
+      content: "";
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      z-index: -1;
+      pointer-events: none;
+      background: inherit;
+      filter: url(#silk-filter) contrast(1.05) brightness(1.02);
+      opacity: 0.6;
+      animation: silk-sway 18s ease-in-out infinite;
+    }
+
+    /* Subtle Grain for Fabric Feel */
+    .flowing-bg::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.02;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .chinese-font {
+      font-family: 'Noto Serif SC', serif;
+    }
+    .name-font {
+      font-family: 'Crimson Pro', serif;
+    }
+    .nav-font {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #svg-filters {
+      position: absolute;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0"
+  }
+}
+</script>
+</head>
+<body class="flowing-bg text-slate-900">
+  <!-- SVG Filter for Silk Texture and Folds -->
+  <svg id="svg-filters" xmlns="http://www.w3.org/2000/svg">
+    <filter id="silk-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.005 0.008" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" dur="25s" values="0.005 0.008; 0.008 0.012; 0.005 0.008" repeatCount="indefinite" />
+      </feTurbulence>
+      
+      <feSpecularLighting in="noise" specularExponent="40" lighting-color="#ffffff" result="specular">
+        <fePointLight x="-1000" y="-1000" z="400">
+           <animate attributeName="x" dur="30s" values="-1000; 2000; -1000" repeatCount="indefinite" />
+        </fePointLight>
+      </feSpecularLighting>
+      
+      <feComposite in="SourceGraphic" in2="specular" operator="arithmetic" k1="0" k2="1" k3="0.4" k4="0" result="composite" />
+      <feDisplacementMap in="composite" in2="noise" scale="10" />
+    </filter>
+  </svg>
+
+  <div id="root"></div>
+</body>
+</html>
