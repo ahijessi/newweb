@@ -1,6 +1,6 @@
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Github, FileText, Play, Pause, Music, Volume2 } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Mail, Github, FileText, Play, Pause, Volume2 } from 'lucide-react';
 
 /** 
  * 🎨 Profile Image URL - Verified for mywebsite
