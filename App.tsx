@@ -8,6 +8,7 @@ import Publications from './pages/Publications';
 import Conferences from './pages/Conferences';
 import Other from './pages/Other';
 import Navigation from './components/Navigation';
+import MusicPlayer from './components/MusicPlayer';
 
 const AppContent: React.FC = () => {
   return (
@@ -30,6 +31,11 @@ const AppContent: React.FC = () => {
           <Route path="/other" element={<Other />} />
         </Routes>
       </main>
+
+      {/* Global Music Player - Persists across route changes */}
+      <div className="px-4 mb-12 w-full">
+        <MusicPlayer />
+      </div>
 
       <footer className="border-t border-slate-200/50 py-8 text-center text-slate-500 text-sm backdrop-blur-sm bg-white/10">
         <p>© {new Date().getFullYear()} <span className="name-font">Qianxi Yu</span> (<span className="chinese-font">余千禧</span>). All rights reserved.</p>
