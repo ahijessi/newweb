@@ -24,6 +24,11 @@ const Other: React.FC = () => {
       name: "Game", 
       image: "https://raw.githubusercontent.com/ahijessi/mywebsite/main/avatar/Game.png"
     },
+    { 
+      name: "Animation", 
+      // Converted GitHub blob URL to raw URL for correct image rendering
+      image: "https://raw.githubusercontent.com/ahijessi/mywebsite/2f45fe4f66f59972c8ed35ec6cde3de35d7a0ff4/avatar/cartoon.png"
+    },
   ];
 
   // Raw URLs for the cat photos - Reverted to mywebsite
@@ -41,7 +46,8 @@ const Other: React.FC = () => {
           <h2 className="text-5xl font-bold text-slate-900 mb-2 italic tracking-tight">I love</h2>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {/* Updated Grid: 2 columns on mobile, 3 columns on desktop to create a 3x2 layout for 6 items */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {hobbies.map((item, index) => (
             <div 
               key={index} 

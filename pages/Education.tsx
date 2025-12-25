@@ -7,13 +7,13 @@ const Education: React.FC = () => {
       period: '2021 - 2024',
       institution: 'Nanjing University of Science and Technology, China',
       degree: 'Research Master of Arts in Linguistics',
-      thesis: 'Mandarin ironic speech comprehension by normal-hearing children and children with cochlear implants'
+      thesis: 'Mandarin ironic speech comprehension by normal-hearing children and children with cochlear implants (supervisor: Assoc. Prof. Ping Tang)'
     },
     {
       period: '2017 - 2021',
       institution: 'Nanjing University of Science and Technology, China',
       degree: 'Bachelor of Arts in English',
-      thesis: 'The role of phonetic training on English vowel perception in noisy environments'
+      thesis: 'The role of phonetic training on English vowel perception in noisy environments (supervisor: Assoc. Prof. Ping Tang)'
     }
   ];
 
