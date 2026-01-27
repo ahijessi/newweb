@@ -108,6 +108,14 @@ const Publications: React.FC = () => {
 
   const coAuthorPapers: Publication[] = [
     {
+      title: "The use of prosody and facial expressions in irony comprehension by Mandarin-speaking preschoolers",
+      authors: "Fuyan Zhu, Qianxi Yu, Shanpeng Li, Ping Tang",
+      journal: "Journal of Pragmatics",
+      year: "2026",
+      pdfUrl: "https://github.com/ahijessi/mywebsite/blob/main/publications/JoP%20paper_2nd%20author.pdf",
+      tag: "Journal"
+    },
+    {
       title: "The effect of visual-articulatory cues on the identification of Mandarin tones by children with cochlear implants",
       authors: "Shanpeng Li, Yinuo Wang, Qianxi Yu, Yan Feng, Ping Tang",
       journal: "Journal of Speech, Language and Hearing Research",
