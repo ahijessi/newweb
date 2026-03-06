@@ -72,7 +72,7 @@ const Home: React.FC = () => {
               I’m especially passionate about helping children with hearing loss identify language barriers and find strategies to overcome them. For data collection, I use behavioral and neuro tools like <strong>EEG</strong>, with software such as <strong>Psychopy</strong> and <strong>MATLAB</strong>, and for statistical analysis, I work with <strong>Python</strong> and <strong>R</strong>. 
             </p>
             <p className="text-xl font-medium text-slate-800">
-              I’m looking for PhD opportunities in relevant fields. Feel free to ask me anything!
+              I just started my PhD journey at Macquarie University this Feb! Feel free to ask me anything!
             </p>
           </div>
         </div>
